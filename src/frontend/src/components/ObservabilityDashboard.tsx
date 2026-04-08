@@ -93,7 +93,7 @@ interface ObservabilityDashboardProps {
 
 export default function ObservabilityDashboard({
   metrics,
-  cgeParameters,
+  cgeParameters: _cgeParameters,
   humanMetrics,
   audioMetrics,
   crossChainMetrics,
@@ -251,6 +251,7 @@ export default function ObservabilityDashboard({
             <AlertTitle>Alertas Constitucionais</AlertTitle>
             <AlertDescription className="space-y-1 mt-2">
               {constitutionalAlerts.map((alert, idx) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: alerts are static strings with no stable ID
                 <div key={idx}>• {alert}</div>
               ))}
             </AlertDescription>
@@ -796,6 +797,7 @@ export default function ObservabilityDashboard({
               <div className="space-y-2">
                 {logs.map((log, index) => (
                   <div
+                    // biome-ignore lint/suspicious/noArrayIndexKey: logs are append-only with no stable ID
                     key={index}
                     className={`p-2 rounded border text-xs font-mono ${
                       log.level === "warn"

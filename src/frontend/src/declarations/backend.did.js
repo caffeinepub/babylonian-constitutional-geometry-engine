@@ -129,7 +129,7 @@ export const TVBroadcastMetrics = IDL.Record({
 });
 
 export const idlService = IDL.Service({
-  '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+  '_initializeAccessControl' : IDL.Func([], [], []),
   'activateMerkabahSolar' : IDL.Func([IDL.Float64], [IDL.Float64], []),
   'addEthereumAgent' : IDL.Func([IDL.Text, IDL.Float64, IDL.Bool], [], []),
   'addNode' : IDL.Func([IDL.Text, IDL.Text], [], []),
@@ -316,7 +316,7 @@ export const idlFactory = ({ IDL }) => {
   });
   
   return IDL.Service({
-    '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+    '_initializeAccessControl' : IDL.Func([], [], []),
     'activateMerkabahSolar' : IDL.Func([IDL.Float64], [IDL.Float64], []),
     'addEthereumAgent' : IDL.Func([IDL.Text, IDL.Float64, IDL.Bool], [], []),
     'addNode' : IDL.Func([IDL.Text, IDL.Text], [], []),

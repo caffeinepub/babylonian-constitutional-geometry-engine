@@ -55,6 +55,7 @@ export default function OmegaCoherence() {
       </p>
 
       <div className="flex justify-center mb-2">
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative gauge visualization */}
         <svg width={180} height={100} viewBox="0 0 180 100">
           <defs>
             <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -103,6 +104,7 @@ export default function OmegaCoherence() {
       </div>
 
       <div className="mb-3 px-1">
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative sparkline visualization */}
         <svg
           width="100%"
           viewBox={`0 0 ${W} ${H}`}

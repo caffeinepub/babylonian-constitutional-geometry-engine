@@ -8,8 +8,8 @@ import Text "mo:core/Text";
 import Float "mo:core/Float";
 import Int "mo:core/Int";
 import Time "mo:core/Time";
-import AccessControl "authorization/access-control";
-import MixinAuthorization "authorization/MixinAuthorization";
+import AccessControl "mo:caffeineai-authorization/access-control";
+import MixinAuthorization "mo:caffeineai-authorization/MixinAuthorization";
 import MerkabahSolar "merkabah_solar";
 
 actor {

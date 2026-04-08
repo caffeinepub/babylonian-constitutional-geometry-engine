@@ -184,6 +184,7 @@ export default function RelayMonitor() {
         className="rounded"
         style={{ background: "oklch(10% 0.02 270)", padding: "8px" }}
       >
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative relay network visualization */}
         <svg width="100%" viewBox="0 0 480 160" style={{ display: "block" }}>
           <path
             d="M100 40 Q130 30 160 35 Q190 30 210 45 Q220 55 215 70 Q200 80 185 85 Q170 90 155 82 Q140 88 125 80 Q105 70 100 55 Z"

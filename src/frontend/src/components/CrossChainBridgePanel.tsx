@@ -43,12 +43,12 @@ interface CrossChainBridgePanelProps {
 }
 
 export default function CrossChainBridgePanel({
-  cgeParameters,
-  humanMetrics,
+  cgeParameters: _cgeParameters,
+  humanMetrics: _humanMetrics,
 }: CrossChainBridgePanelProps) {
-  const { data: crossChainMetrics, isLoading: metricsLoading } =
+  const { data: crossChainMetrics, isLoading: _metricsLoading } =
     useCrossChainMetrics();
-  const { data: ethereumAgents, isLoading: agentsLoading } =
+  const { data: ethereumAgents, isLoading: _agentsLoading } =
     useEthereumAgents();
   const [bridgeActive, setBridgeActive] = useState(true);
 

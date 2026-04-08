@@ -9,17 +9,7 @@
       "build/**",
       "*.config.js",
       "src/declarations/**",
-      "src/config.ts",
-      "src/components/ConstitutionalShader.tsx",
-      "src/components/CrossChainBridgePanel.tsx",
-      "src/components/CymaticAudioShader.tsx",
-      "src/components/FullStackController.tsx",
-      "src/components/HumanShader.tsx",
-      "src/components/MerkabahSolarShader.tsx",
-      "src/components/ObservabilityDashboard.tsx",
-      "src/components/TVBroadcastPanel.tsx",
-      "src/components/ProposalCard.tsx",
-      "src/components/VotingPanel.tsx"
+      "src/config.ts"
     ]
   },
   "formatter": {
@@ -41,10 +31,6 @@
       "style": {
         "useConst": "off",
         "noNonNullAssertion": "off"
-      },
-      "a11y": {
-        "noSvgWithoutTitle": "off",
-        "useKeyWithClickEvents": "off"
       }
     }
   },

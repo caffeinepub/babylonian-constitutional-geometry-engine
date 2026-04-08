@@ -2,12 +2,16 @@ import { useState } from "react";
 import AppHeader from "./components/AppHeader";
 import ArbitrageActivity from "./components/ArbitrageActivity";
 import EEGManifold from "./components/EEGManifold";
+import NeurofeedbackTab from "./components/NeurofeedbackTab";
 import OmegaCoherence from "./components/OmegaCoherence";
 import QuantumMethod from "./components/QuantumMethod";
 import QuorumNodes from "./components/QuorumNodes";
+import QuorumTab from "./components/QuorumTab";
 import RelayMonitor from "./components/RelayMonitor";
 import SessionManagement from "./components/SessionManagement";
+import SettingsTab from "./components/SettingsTab";
 import SystemPhase from "./components/SystemPhase";
+import TradingTab from "./components/TradingTab";
 
 export type NavTab =
   | "Dashboard"
@@ -44,9 +48,7 @@ export default function App() {
       <AppHeader activeTab={activeTab} onTabChange={setActiveTab} />
 
       <main className="max-w-[1200px] mx-auto px-5 pt-8 pb-16">
-        {activeTab !== "Dashboard" ? (
-          <ComingSoon tab={activeTab} />
-        ) : (
+        {activeTab === "Dashboard" ? (
           <>
             {/* Row 1: 3 columns */}
             <div className="grid grid-cols-3 gap-5 mb-5">
@@ -76,6 +78,16 @@ export default function App() {
               <QuorumNodes />
             </div>
           </>
+        ) : activeTab === "Trading" ? (
+          <TradingTab />
+        ) : activeTab === "Neurofeedback" ? (
+          <NeurofeedbackTab />
+        ) : activeTab === "Quorum" ? (
+          <QuorumTab />
+        ) : activeTab === "Settings" ? (
+          <SettingsTab />
+        ) : (
+          <ComingSoon tab={activeTab} />
         )}
       </main>
 

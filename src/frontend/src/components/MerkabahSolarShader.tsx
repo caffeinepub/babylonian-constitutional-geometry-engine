@@ -26,6 +26,7 @@ export default function MerkabahSolarShader({
   const animationFrameRef = useRef<number | undefined>(undefined);
   const startTimeRef = useRef<number>(Date.now());
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: parameters is a ref value, not a reactive dep; merkabahMetrics and isPlaying are intended deps
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;

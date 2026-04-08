@@ -1,0 +1,182 @@
+type Vote = 
+ record {
+   accepted: bool;
+   nodeId: text;
+ };
+type Vector3D = 
+ record {
+   x: float64;
+   y: float64;
+   z: float64;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserProfile = 
+ record {
+   name: text;
+   nodeId: opt text;
+ };
+type TVBroadcastSummary = 
+ record {
+   broadcastId: nat;
+   nodeId: text;
+   signalStrength: float64;
+   status: text;
+   transmissionQuality: float64;
+ };
+type TVBroadcastMetrics = 
+ record {
+   amplitude: float64;
+   bleStatus: bool;
+   broadcastId: nat;
+   entropy: float64;
+   frameRate: float64;
+   frequency: float64;
+   nodeId: text;
+   phiIntegrity: float64;
+   pqcStatus: bool;
+   timestamp: int;
+   tmrValidation: bool;
+   transmissionQuality: float64;
+ };
+type ProposalStatus = 
+ variant {
+   approved;
+   crossChainConsensus;
+   majorityConsensus;
+   noConsensus;
+   pending;
+   rejected;
+   tmrConsensus;
+   voting;
+ };
+type Proposal = 
+ record {
+   content: text;
+   id: nat;
+   proposer: principal;
+   status: ProposalStatus;
+   title: text;
+   votes: vec Vote;
+ };
+type NodeStatus = 
+ variant {
+   active;
+   inactive;
+   participating;
+   voting;
+ };
+type Node = 
+ record {
+   id: text;
+   location: text;
+   status: NodeStatus;
+ };
+type MerkabahSolar = 
+ record {
+   ar4366Flux: float64;
+   autisticContinuum: bool;
+   chiHermetica: float64;
+   tetraedroFeminino: Vector3D;
+   tetraedroMasculino: Vector3D;
+ };
+type HumanMetrics = 
+ record {
+   cognitiveLoad: float64;
+   intentConfidence: float64;
+   phiDeviation: float64;
+   sandboxActive: bool;
+ };
+type EthereumAgent = 
+ record {
+   address: text;
+   checksumValid: bool;
+   dhtMetrics: DHTMetrics;
+   entropyScore: float64;
+ };
+type DHTMetrics = 
+ record {
+   dhtScore: float64;
+   merkleVerified: bool;
+   nodeCount: nat;
+ };
+type CymaticParameters = 
+ record {
+   intensity: float64;
+   uniformData: vec float64;
+   visualPattern: text;
+ };
+type CrossChainMetrics = 
+ record {
+   chi: float64;
+   chronoflux: float64;
+   inv1: bool;
+   inv2: bool;
+   inv3: bool;
+   inv4: bool;
+   inv5: bool;
+   inv6: bool;
+   phi: float64;
+   rhoAsi: float64;
+   rhoEth: float64;
+   theta: float64;
+ };
+type CrossChainEvent = 
+ record {
+   details: text;
+   eventType: text;
+   timestamp: int;
+ };
+type AudioMetrics = 
+ record {
+   amplitude: float64;
+   entropyNoise: float64;
+   frequency: float64;
+   phaseDrift: float64;
+ };
+service : {
+  _initializeAccessControl: () -> ();
+  activateMerkabahSolar: (intention: float64) -> (float64);
+  addEthereumAgent: (address: text, entropyScore: float64, checksumValid:
+   bool) -> ();
+  addNode: (nodeId: text, location: text) -> ();
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  createProposal: (title: text, content: text) -> (nat);
+  generateCymaticParameters: (audioMetrics: AudioMetrics) ->
+   (CymaticParameters);
+  getAllNodes: () -> (vec Node) query;
+  getAllProposals: () -> (vec Proposal) query;
+  getAllProposalsByTitle: () -> (vec Proposal) query;
+  getAudioMetrics: (user: principal) -> (AudioMetrics) query;
+  getCallerUserProfile: () -> (opt UserProfile) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getCrossChainEvents: () -> (vec CrossChainEvent) query;
+  getCrossChainEventsByType: (eventType: text) -> (vec CrossChainEvent) query;
+  getCrossChainMetrics: () -> (CrossChainMetrics) query;
+  getCurrentTVBroadcastSummaries: () -> (vec TVBroadcastSummary) query;
+  getCymaticParameters: (user: principal) -> (CymaticParameters) query;
+  getEthereumAgent: (address: text) -> (EthereumAgent) query;
+  getHumanMetrics: (user: principal) -> (HumanMetrics) query;
+  getMerkabahSolarParams: () -> (MerkabahSolar) query;
+  getNode: (nodeId: text) -> (Node) query;
+  getProposal: (proposalId: nat) -> (Proposal) query;
+  getUserProfile: (user: principal) -> (opt UserProfile) query;
+  isCallerAdmin: () -> (bool) query;
+  logCrossChainEvent: (eventType: text, details: text) -> ();
+  pruneOldTVBroadcastMetrics: () -> ();
+  removeNode: (nodeId: text) -> ();
+  saveCallerUserProfile: (profile: UserProfile) -> ();
+  submitTVBroadcastMetrics: (metrics: TVBroadcastMetrics) -> ();
+  updateAudioMetrics: (metrics: AudioMetrics) -> ();
+  updateCrossChainMetrics: (metrics: CrossChainMetrics) -> ();
+  updateCymaticParameters: (params: CymaticParameters) -> ();
+  updateDHTMetrics: (address: text, nodeCount: nat, merkleVerified: bool,
+   dhtScore: float64) -> ();
+  updateHumanMetrics: (metrics: HumanMetrics) -> ();
+  updateNodeStatus: (nodeId: text, status: NodeStatus) -> ();
+  voteOnProposal: (proposalId: nat, nodeId: text, accepted: bool) -> ();
+}

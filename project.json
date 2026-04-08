@@ -1,0 +1,26 @@
+{
+  "overview": "Arkhe(n) Platform is a quantum consensus dashboard featuring animated Ω' coherence gauges, rotating 3D icosahedrons (EEG Manifold), real-time relay transaction monitoring, and a quorum node network map. Built on the Internet Computer, it offers full governance via proposals and voting, neurofeedback session control, cross-chain metrics, and comprehensive system settings — all wrapped in a deep OKLCH dark theme with cyan, neon-purple, and electric-blue accents.",
+  "features": [
+    "Animated Ω' coherence gauge with sparkline history",
+    "3D rotating icosahedron (golden-ratio EEG manifold)",
+    "Real-time relay transaction log with geo-mapped nodes",
+    "8-city quantum consensus network map with pulsing arcs",
+    "Trading tab: DEX scanner, arbitrage feed, cross-chain bridge",
+    "Neurofeedback tab: live EEG metrics, cymatic parameters, session presets",
+    "Quorum tab: governance proposals, voting, constitutional invariants",
+    "Settings tab: user profile, hardware profiles, therapeutic protocols",
+    "OKLCH dark theme with cyan/neon-purple/electric-blue accents"
+  ],
+  "category": "productivity",
+  "tags": [
+    "quantum",
+    "neurofeedback",
+    "dashboard",
+    "governance",
+    "blockchain",
+    "real-time",
+    "3d-visualization",
+    "dark-theme"
+  ],
+  "last_updated": "2026-04-08T21:39:44.602Z"
+}

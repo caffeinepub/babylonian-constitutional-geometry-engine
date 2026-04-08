@@ -117,7 +117,7 @@ export type UserRole = { 'admin' : null } |
 export interface Vector3D { 'x' : number, 'y' : number, 'z' : number }
 export interface Vote { 'nodeId' : string, 'accepted' : boolean }
 export interface _SERVICE {
-  '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
+  '_initializeAccessControl' : ActorMethod<[], undefined>,
   'activateMerkabahSolar' : ActorMethod<[number], number>,
   'addEthereumAgent' : ActorMethod<[string, number, boolean], undefined>,
   'addNode' : ActorMethod<[string, string], undefined>,

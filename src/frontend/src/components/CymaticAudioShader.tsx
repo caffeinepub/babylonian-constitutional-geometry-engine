@@ -39,6 +39,7 @@ export default function CymaticAudioShader({
   const gainNodeRef = useRef<GainNode | null>(null);
 
   // Initialize Web Audio API
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentionally only re-runs on audioEnabled toggle; amplitude/frequency updates handled separately
   useEffect(() => {
     if (!audioEnabled) {
       // Clean up audio context
@@ -311,6 +312,7 @@ export default function CymaticAudioShader({
     gl.attachShader(program, vertexShader);
     gl.attachShader(program, fragmentShader);
     gl.linkProgram(program);
+    // biome-ignore lint/correctness/useHookAtTopLevel: gl.useProgram is a WebGL method, not a React hook
     gl.useProgram(program);
 
     // Set up geometry

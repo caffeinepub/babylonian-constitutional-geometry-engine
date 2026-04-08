@@ -245,6 +245,7 @@ export default function HumanShader({
     gl.attachShader(program, vertexShader);
     gl.attachShader(program, fragmentShader);
     gl.linkProgram(program);
+    // biome-ignore lint/correctness/useHookAtTopLevel: gl.useProgram is a WebGL method, not a React hook
     gl.useProgram(program);
 
     // Set up geometry

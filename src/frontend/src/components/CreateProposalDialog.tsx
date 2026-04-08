@@ -14,12 +14,19 @@ import { Textarea } from "@/components/ui/textarea";
 import { Loader2, Plus } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useCreateProposal } from "../hooks/useQueries";
 
-export default function CreateProposalDialog() {
+interface CreateProposalDialogProps {
+  onCreated?: () => void;
+}
+
+export default function CreateProposalDialog({
+  onCreated,
+}: CreateProposalDialogProps) {
   const [open, setOpen] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const createProposal = useCreateProposal();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,24 +36,33 @@ export default function CreateProposalDialog() {
       return;
     }
 
-    setIsSubmitting(true);
-
-    // Simulate proposal creation (backend method not available)
-    setTimeout(() => {
+    try {
+      await createProposal.mutateAsync({
+        title: title.trim(),
+        content: content.trim(),
+      });
       toast.success("Proposta criada com sucesso", {
         description: "A proposta foi submetida para votação TMR",
       });
       setTitle("");
       setContent("");
       setOpen(false);
-      setIsSubmitting(false);
-    }, 1000);
+      onCreated?.();
+    } catch {
+      toast.error("Erro ao criar proposta", {
+        description: "Verifique sua conexão e tente novamente.",
+      });
+    }
   };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" className="gap-2">
+        <Button
+          size="sm"
+          className="gap-2"
+          data-ocid="quorum.create-proposal.trigger"
+        >
           <Plus className="w-4 h-4" />
           Nova Proposta
         </Button>
@@ -67,7 +83,8 @@ export default function CreateProposalDialog() {
                 placeholder="Ex: Artigo 2.3 — Domínios Aspirantes"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                disabled={isSubmitting}
+                disabled={createProposal.isPending}
+                data-ocid="quorum.create-proposal.title"
               />
             </div>
             <div className="space-y-2">
@@ -78,7 +95,8 @@ export default function CreateProposalDialog() {
                 rows={6}
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                disabled={isSubmitting}
+                disabled={createProposal.isPending}
+                data-ocid="quorum.create-proposal.content"
               />
             </div>
           </div>
@@ -87,12 +105,16 @@ export default function CreateProposalDialog() {
               type="button"
               variant="outline"
               onClick={() => setOpen(false)}
-              disabled={isSubmitting}
+              disabled={createProposal.isPending}
             >
               Cancelar
             </Button>
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting && (
+            <Button
+              type="submit"
+              disabled={createProposal.isPending}
+              data-ocid="quorum.create-proposal.submit"
+            >
+              {createProposal.isPending && (
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
               )}
               Criar Proposta

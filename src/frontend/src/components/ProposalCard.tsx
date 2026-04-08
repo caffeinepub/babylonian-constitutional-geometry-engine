@@ -72,7 +72,7 @@ export default function ProposalCard({
   };
 
   const nodes = ["SP-BR", "LIS-PT", "JNB-ZA"];
-  const votedNodes = proposal.votes.map((v) => v.nodeId);
+  const _votedNodes = proposal.votes.map((v) => v.nodeId);
 
   return (
     <Card className="border-border/50 hover:border-primary/30 transition-all">

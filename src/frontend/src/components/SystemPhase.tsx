@@ -38,6 +38,7 @@ export default function SystemPhase() {
       </div>
 
       {/* Mandala */}
+      {/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative mandala visualization */}
       <svg width={200} height={200} viewBox="0 0 200 200">
         <defs>
           <radialGradient id="mandalaGrad" cx="50%" cy="50%" r="50%">

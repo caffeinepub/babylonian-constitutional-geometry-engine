@@ -61,15 +61,15 @@ interface FullStackControllerProps {
 export default function FullStackController({
   cgeParameters,
   onParametersChange,
-  observabilityMetrics,
+  observabilityMetrics: _observabilityMetrics,
   onMetricsChange,
-  humanMetrics,
+  humanMetrics: _humanMetrics,
   onHumanMetricsChange,
-  audioMetrics,
+  audioMetrics: _audioMetrics,
   onAudioMetricsChange,
   crossChainMetrics,
   onCrossChainMetricsChange,
-  merkabahMetrics,
+  merkabahMetrics: _merkabahMetrics,
   onMerkabahMetricsChange,
 }: FullStackControllerProps) {
   const { data: proposals } = useProposals();
@@ -80,6 +80,7 @@ export default function FullStackController({
   const crossChainKernelIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const merkabahSolarIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentionally only depends on proposals; cgeParameters/onParametersChange are stable refs
   useEffect(() => {
     // Orchestrate data flow between backend and frontend
     if (proposals) {
@@ -100,6 +101,7 @@ export default function FullStackController({
     }
   }, [proposals]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: onMetricsChange is a stable callback, intentionally omitted
   useEffect(() => {
     // Simulate real-time metrics updates
     metricsIntervalRef.current = setInterval(() => {
@@ -110,6 +112,7 @@ export default function FullStackController({
 
       const nodes = ["SP-BR", "LIS-PT", "JNB-ZA"];
       const nodeHealth: any = {};
+      // biome-ignore lint/complexity/noForEach: legacy pattern, not performance-critical
       nodes.forEach((node) => {
         const baseUptime = 99.9;
         const baseLatency = node === "SP-BR" ? 12 : node === "LIS-PT" ? 18 : 24;
@@ -143,6 +146,7 @@ export default function FullStackController({
     };
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: onHumanMetricsChange is a stable callback, intentionally omitted
   useEffect(() => {
     // Human Interface NO_TOOLS v35.3‑Ω module simulation
     humanInterfaceIntervalRef.current = setInterval(() => {
@@ -183,6 +187,7 @@ export default function FullStackController({
     };
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: onAudioMetricsChange is a stable callback, intentionally omitted
   useEffect(() => {
     // CGE Audio Engine simulation
     audioEngineIntervalRef.current = setInterval(() => {
@@ -227,6 +232,7 @@ export default function FullStackController({
     };
   }, [cgeParameters]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: onCrossChainMetricsChange is a stable callback, intentionally omitted
   useEffect(() => {
     // CGE.CrossChainKernel simulation
     crossChainKernelIntervalRef.current = setInterval(() => {
@@ -271,6 +277,7 @@ export default function FullStackController({
     };
   }, [crossChainMetrics]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: onMerkabahMetricsChange is a stable callback, intentionally omitted
   useEffect(() => {
     // MerkabahSolar simulation and sync with backend
     merkabahSolarIntervalRef.current = setInterval(() => {

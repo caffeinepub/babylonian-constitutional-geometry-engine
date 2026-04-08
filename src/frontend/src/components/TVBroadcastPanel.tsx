@@ -507,6 +507,7 @@ export default function TVBroadcastPanel({
             <AlertTitle>Alertas de Transmissão</AlertTitle>
             <AlertDescription className="space-y-1 mt-2">
               {alerts.map((alert, idx) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: alerts are static strings with no stable ID
                 <div key={idx}>• {alert}</div>
               ))}
             </AlertDescription>

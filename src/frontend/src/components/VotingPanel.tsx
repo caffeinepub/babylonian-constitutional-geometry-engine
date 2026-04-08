@@ -42,7 +42,7 @@ export default function VotingPanel({
   const { data: proposals, isLoading } = useProposals();
   const [selectedTab, setSelectedTab] = useState("all");
 
-  const getStatusIcon = (status: ProposalStatus) => {
+  const _getStatusIcon = (status: ProposalStatus) => {
     switch (status) {
       case "approved":
       case "tmrConsensus":
@@ -61,7 +61,7 @@ export default function VotingPanel({
     }
   };
 
-  const getStatusLabel = (status: ProposalStatus): string => {
+  const _getStatusLabel = (status: ProposalStatus): string => {
     const labels: Record<ProposalStatus, string> = {
       pending: "Pendente",
       voting: "Em Votação",

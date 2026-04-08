@@ -89,6 +89,7 @@ export default function QuorumNodes() {
           border: "1px solid oklch(20% 0.03 270)",
         }}
       >
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative world map visualization */}
         <svg
           width="100%"
           viewBox="0 0 480 180"
@@ -171,6 +172,7 @@ export default function QuorumNodes() {
             const isActive = activeNode === i;
             const isPulsing = pulseIdx === i;
             return (
+              // biome-ignore lint/a11y/useKeyWithClickEvents: SVG node is decorative, keyboard interaction not required
               <g
                 key={city.name}
                 style={{ cursor: "pointer" }}
